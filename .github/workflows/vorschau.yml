@@ -39,12 +39,15 @@ jobs:
         run: |
           rm -rf _vorschau && cp -r website _vorschau
           # Jede HTML-Seite: Suchmaschinen aussperren
-          for f in _vorschau/*.html _vorschau/leistungen/*.html; do
+          # Alle HTML-Seiten finden, egal in welchem Unterordner sie liegen.
+          # (Ein fester Ordnername wie "leistungen" laesst den Ablauf scheitern,
+          #  sobald ein Projekt diesen Ordner nicht hat.)
+          while IFS= read -r f; do
             # vorhandenen robots-Hinweis ersetzen ...
             sed -i 's|<meta name="robots" content="[^"]*">|<meta name="robots" content="noindex, nofollow">|' "$f"
             # ... und falls keiner da war, einen einfuegen
             grep -q 'name="robots"' "$f" || sed -i 's|<head>|<head>\n  <meta name="robots" content="noindex, nofollow">|' "$f"
-          done
+          done < <(find _vorschau -name "*.html")
           # robots.txt der Vorschau: alles sperren, keine Sitemap
           printf 'User-agent: *\nDisallow: /\n' > _vorschau/robots.txt
           rm -f _vorschau/sitemap.xml
