@@ -302,15 +302,19 @@ body > footer.seite a:hover,body > footer.seite a:focus-visible{color:var(--gold
 body > footer.seite ul{display:grid;gap:6px}
 .fusshinweis{font-size:.79rem;color:var(--muted);max-width:70em;padding-bottom:30px}
 .copyleiste{background:var(--gold);color:#fff;text-align:center;padding:14px 20px;font-size:.85rem}
-.copyleiste a{color:#fff;text-decoration:underline}
-.copyleiste a:hover{color:var(--ivory)}
+/* Hoehere Gewichtung als "body > footer.seite a", sonst wird die AO-Verlinkung
+   dunkel statt weiss und verschwindet im goldenen Balken. */
+body > footer.seite .copyleiste a,.copyleiste a{color:#fff;text-decoration:underline}
+body > footer.seite .copyleiste a:hover,body > footer.seite .copyleiste a:focus-visible,.copyleiste a:hover{color:var(--ivory)}
 .sozial{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .sozial a{
   display:inline-flex;align-items:center;min-height:40px;padding:8px 18px;
   border:1.5px solid var(--line);border-radius:999px;background:var(--white);
   color:var(--ink);font-size:.85rem;font-weight:600;text-decoration:none;
+  gap:9px;
   transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
 }
+.sozial-symbol{width:19px;height:19px;flex:0 0 auto;display:block}
 /* Hoehere Gewichtung als die allgemeine Fusszeilen-Regel, sonst gewinnt
    deren Goldton und die Beschriftung verschwindet im goldenen Hintergrund. */
 body > footer.seite .sozial a:hover,
