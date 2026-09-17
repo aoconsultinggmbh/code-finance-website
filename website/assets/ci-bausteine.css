@@ -1,0 +1,73 @@
+/* ============================================================================
+   CODE FINANCE, Farben fuer die mitgelieferten Bausteine
+   Das Einwilligungsbanner und die Barrierefreiheits-Hilfe sind Hausbausteine
+   von AO Consulting. Sie bringen ihre eigenen Farben mit, Marine und Koralle.
+   Diese Datei setzt sie auf die CI von CODE FINANCE, Gold und Tinte.
+
+   Reihenfolge beachten: erst schrift.css, stil.css, barrierefreiheit.css,
+   einwilligung.css, dann diese Datei. Nur so gewinnen die Werte hier.
+   Die Bausteine selbst bleiben unveraendert, damit Korrekturen aus dem
+   Hausstandard weiter uebernommen werden koennen.
+   ============================================================================ */
+
+:root{
+  /* ---- Einwilligungsbanner ---- */
+  --ein-navy:#27252A;          /* Tinte, Ueberschriften, Rahmen, Fokus */
+  --ein-navy-tief:#1B1A1E;
+  --ein-navy-tinte:#131215;
+  --ein-coral:#BF9B30;         /* Gold, Akzent */
+  --ein-coral-dunkel:#A8871F;
+  --ein-text:#3E3B45;
+  --ein-grau:#6B6772;
+  --ein-linie:#E8E4DA;
+  --ein-hell:#F7F3EA;          /* Ivory */
+  --ein-radius:8px;
+
+  /* ---- Barrierefreiheits-Hilfe ---- */
+  --bf-navy:#27252A;
+  --bf-navy-dark:#131215;
+  --bf-akzent:#BF9B30;
+  --bf-linie:#E8E4DA;
+  --bf-text:#3E3B45;
+  --bf-grau:#6B6772;
+  --bf-hell:#F7F3EA;
+}
+
+/* ---------------------------------------------------------------------------
+   Einzelne Stellen in den Bausteinen tragen feste Marine- oder Korallenwerte,
+   die keine Variable kennen. Sie werden hier nachgezogen.
+   --------------------------------------------------------------------------- */
+
+/* Abdunklung neutral statt blaustichig */
+.ein-hinter{background:rgba(27,26,30,.6)}
+.ein-karte{box-shadow:0 30px 80px -30px rgba(27,26,30,.55)}
+
+/* Knoepfe im Duktus der Seite: 5px Radius, Gold mit Verlauf wie .btn */
+.ein-knopf{border-radius:5px;font-weight:800}
+.ein-knopf--alle{
+  background:linear-gradient(180deg,#CBA83A 0%,#BF9B30 55%,#A8871F 100%);
+  border-color:#A8871F;color:#fff;
+  box-shadow:0 10px 24px -12px rgba(191,155,48,.85);
+}
+.ein-knopf--alle:hover{background:linear-gradient(180deg,#C29D31 0%,#A8871F 55%,#8F7219 100%)}
+.ein-knopf--alle:focus-visible{outline-color:#A8871F}
+
+/* Kleine Grossbuchstaben-Zeilen im dunkleren Gold, das liest sich sauberer */
+.ein-kicker,.ein-empfehlung{color:#A8871F}
+
+/* Pille "Immer aktiv" und Schaltermulde in Sandtoenen */
+.ein-immer{background:#F7F1DF;color:#27252A}
+.ein-schalter{background:#D8D3C7}
+.ein-schalter::after{box-shadow:0 2px 5px rgba(27,26,30,.25)}
+
+/* Platzhalter fuer gesperrte Einbettungen */
+.ein-sperre{
+  background:repeating-linear-gradient(45deg,rgba(39,37,42,.05) 0 2px,transparent 2px 11px),#F7F3EA;
+}
+
+/* ---- Barrierefreiheits-Hilfe ---- */
+.bf-knopf{box-shadow:0 10px 30px -8px rgba(27,26,30,.5)}
+.bf-panel,html.bf-links .bf-panel{box-shadow:-14px 0 44px -18px rgba(27,26,30,.45)}
+html.bf-links .bf-panel{box-shadow:14px 0 44px -18px rgba(27,26,30,.45)}
+.bf-leselinie{background:rgba(191,155,48,.12)}
+.bf-maske div{background:rgba(27,26,30,.72)}

@@ -1,0 +1,573 @@
+/* ============================================================================
+   CODE FINANCE, Hauptstilblatt
+   CI aus der bestehenden Kundenseite uebernommen:
+   Schrift Montserrat, Ueberschriften #27252A in 600, Gold #BF9B30,
+   Ivory #F7F3EA, Blauton #EEF1F6, Buttons 5px Radius und Gewicht 800.
+
+   Aufbau: 1 Grundlagen . 2 Kopf und Navigation . 3 Bausteine . 4 Sektionen
+           5 Formular . 6 Fuss . 7 Rechtsseiten . 8 Responsive
+   ============================================================================ */
+
+/* ===== 1 Grundlagen ===================================================== */
+:root{
+  --gold:#BF9B30;
+  --gold-dark:#A8871F;
+  --gold-tint:#F7F1DF;
+  --ink:#27252A;
+  --body:#1B1A1E;
+  --muted:#4F4C55;
+  --ivory:#F7F3EA;
+  --bluetint:#EEF1F6;
+  --line:#E8E4DA;
+  --white:#FFFFFF;
+  --ok:#2E7D52;
+  --no:#B3452F;
+  --shadow:0 2px 24px rgba(39,37,42,.09);
+  --font:"Montserrat",Helvetica,Arial,Lucida,sans-serif;
+  --kopfhoehe:81px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--kopfhoehe) + 12px)}
+body{
+  font-family:var(--font);color:var(--body);background:var(--white);
+  font-size:1.0625rem;line-height:1.75;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+img,video{max-width:100%;height:auto}
+picture{display:block}
+a{color:var(--gold-dark)}
+a:hover{color:var(--ink)}
+ul{list-style:none}
+
+.container{width:90%;max-width:1400px;margin:0 auto}
+.container.schmal{max-width:900px}
+main{display:block}
+section{padding:84px 0}
+.mitte{text-align:center}
+.abstand{margin-top:36px}
+
+h1,h2,h3,h4{color:var(--ink);font-weight:600;line-height:1.22}
+h1{font-size:clamp(1.9rem,4.2vw,3.05rem)}
+h2{font-size:clamp(1.5rem,3vw,2.4rem);margin-bottom:.55em}
+h3{font-size:1.15rem;margin-bottom:.4em}
+h4{font-size:1rem;margin-bottom:.4em}
+p{margin-bottom:1em}
+p:last-child{margin-bottom:0}
+.kicker{display:block;color:var(--gold);font-weight:600;font-size:.95rem;margin-bottom:12px;letter-spacing:.06em;text-transform:uppercase}
+
+/* Ein Wort je Ueberschrift in Gold. Hebt die Kernaussage heraus, ohne die
+   Zeile zu zerreissen. Nie mehr als ein Wort oder eine kurze Wortgruppe. */
+.mark{color:var(--gold);font-weight:600}
+h1 .mark{font-weight:600}
+.lead{color:var(--muted);max-width:46em}
+
+/* Sprunglinks und Fokus */
+.sprunglinks a{
+  position:absolute;left:-9999px;top:0;z-index:300;background:var(--ink);color:#fff;
+  padding:12px 20px;font-weight:600;text-decoration:none;
+}
+.sprunglinks a:focus{left:8px;top:8px}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+:focus:not(:focus-visible){outline:none}
+header.seite :focus-visible,footer.seite :focus-visible{outline-color:var(--gold-dark)}
+
+/* ===== 2 Kopf und Navigation ============================================ */
+header.seite{position:sticky;top:0;z-index:60;background:var(--white);box-shadow:0 1px 0 rgba(0,0,0,.1)}
+header.seite .leiste{
+  display:flex;align-items:center;justify-content:space-between;
+  height:var(--kopfhoehe);gap:20px;padding:0 35px;
+}
+.logo{display:flex;align-items:center;text-decoration:none}
+.logo img{display:block;height:44px;width:auto}
+nav.haupt{display:flex;gap:26px;align-items:center}
+nav.haupt a{text-decoration:none;font-size:.92rem;font-weight:600;color:var(--ink);white-space:nowrap}
+/* Der Button im Kopf behaelt seine eigene Schriftfarbe. Ohne diese Zeile
+   gewinnt die Regel darueber und die Beschriftung verschwindet im Gold. */
+nav.haupt a.btn{color:#fff}
+nav.haupt a.btn.hell{color:var(--gold-dark)}
+nav.haupt a:not(.btn):hover{color:var(--gold)}
+nav.haupt a:not(.btn)[aria-current="page"]{color:var(--gold)}
+.burger{
+  display:none;background:none;border:2px solid var(--line);border-radius:5px;
+  padding:10px 14px;cursor:pointer;font-family:var(--font);font-size:.9rem;
+  font-weight:600;color:var(--ink);align-items:center;gap:8px;min-height:44px;
+}
+.burger:hover{border-color:var(--gold);color:var(--gold)}
+.burger .striche{display:inline-block;width:18px;height:2px;background:currentColor;position:relative}
+.burger .striche::before,.burger .striche::after{content:"";position:absolute;left:0;width:18px;height:2px;background:currentColor}
+.burger .striche::before{top:-6px}
+.burger .striche::after{top:6px}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:linear-gradient(180deg,#CBA83A 0%,var(--gold) 55%,var(--gold-dark) 100%);
+  color:#fff;text-decoration:none;font-weight:700;font-size:1rem;letter-spacing:.01em;
+  padding:14px 30px;border-radius:5px;border:1px solid var(--gold-dark);
+  cursor:pointer;font-family:var(--font);white-space:nowrap;min-height:48px;line-height:1.25;
+  box-shadow:0 6px 18px rgba(191,155,48,.28),inset 0 1px 0 rgba(255,255,255,.28);
+  transition:transform .18s ease,box-shadow .18s ease,filter .18s ease,background .18s ease;
+}
+.btn:hover,.btn:focus-visible{
+  color:#fff;transform:translateY(-2px);filter:saturate(1.06);
+  box-shadow:0 12px 26px rgba(191,155,48,.38),inset 0 1px 0 rgba(255,255,255,.34);
+}
+.btn:active{transform:translateY(0);box-shadow:0 4px 12px rgba(191,155,48,.3)}
+.btn .pfeil{transition:transform .18s ease;font-weight:700}
+.btn:hover .pfeil{transform:translateX(3px)}
+
+.btn.hell{
+  background:var(--white);color:var(--gold-dark);border:1.5px solid var(--gold);
+  box-shadow:0 2px 10px rgba(39,37,42,.07);
+}
+.btn.hell:hover,.btn.hell:focus-visible{
+  background:var(--gold-tint);color:var(--gold-dark);border-color:var(--gold-dark);
+  box-shadow:0 10px 22px rgba(39,37,42,.12);
+}
+.btn.klein{padding:11px 20px;font-size:.9rem;min-height:44px}
+
+/* Goldband */
+.goldband{background:var(--gold);color:#fff;padding:16px 0;text-align:center;font-weight:600;font-size:1rem}
+.goldband .container{display:flex;flex-wrap:wrap;gap:10px 16px;justify-content:center;align-items:center}
+.goldband a.btn{background:#fff;color:var(--gold-dark);border-color:#fff}
+.goldband a.btn:hover,.goldband a.btn:focus-visible{background:var(--ivory);color:var(--gold-dark);border-color:var(--ivory)}
+
+/* ===== 3 Bausteine ====================================================== */
+.karten{display:grid;gap:22px;margin-top:38px}
+.karten.vier{grid-template-columns:repeat(4,1fr)}
+.karten.drei{grid-template-columns:repeat(3,1fr)}
+.karten.zwei{grid-template-columns:repeat(2,1fr)}
+.karte{
+  background:var(--white);box-shadow:var(--shadow);padding:32px 28px;display:flex;
+  flex-direction:column;gap:10px;border-top:3px solid transparent;
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+}
+.karte:hover{transform:translateY(-4px);border-top-color:var(--gold);box-shadow:0 14px 34px rgba(39,37,42,.13)}
+.karte .icon{color:var(--gold);height:34px}
+.karte .icon svg{height:34px;width:34px}
+.karte p{font-size:.94rem;color:var(--muted);margin:0}
+.karte .fazit{margin-top:auto;font-size:.86rem;font-weight:600;color:var(--ink);border-top:1px dashed var(--line);padding-top:12px}
+
+.vorteile{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:38px}
+.vorteil{
+  background:var(--white);box-shadow:var(--shadow);border-top:4px solid var(--gold);
+  padding:32px 28px;transition:transform .2s ease,box-shadow .2s ease;
+}
+.vorteil:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(39,37,42,.13)}
+.vorteil p{font-size:.94rem;color:var(--muted)}
+
+.schritte{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:38px;counter-reset:schritt}
+.schritt{
+  background:var(--white);box-shadow:var(--shadow);display:flex;flex-direction:column;
+  overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;
+}
+.schritt:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(39,37,42,.13)}
+.schritt picture{overflow:hidden}
+.schritt img{transition:transform .5s ease}
+.schritt:hover img{transform:scale(1.04)}
+.schritt img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.schritt .text{padding:26px}
+.schritt .text::before{
+  counter-increment:schritt;content:counter(schritt,decimal-leading-zero);
+  font-size:1.8rem;font-weight:800;color:var(--gold);display:block;margin-bottom:6px;line-height:1;
+}
+.schritt p{font-size:.93rem;color:var(--muted)}
+
+/* Foto-Hintergrund, Bild liegt lokal und laedt ohne Fremdanfrage */
+.fotoflaeche{
+  background-image:linear-gradient(90deg,rgba(247,243,234,.96) 30%,rgba(247,243,234,.82) 100%),
+    url("../img/codefinance-karlsruhe-buero-team-hintergrund.webp");
+  background-size:cover;background-position:center right;
+}
+.fotoflaeche2{
+  background-image:linear-gradient(90deg,rgba(238,241,246,.97) 35%,rgba(247,243,234,.85) 100%),
+    url("../img/codefinance-karlsruhe-beratung-hintergrund.webp");
+  background-size:cover;background-position:center right;
+}
+
+/* ===== 4 Sektionen ====================================================== */
+.hero{background:linear-gradient(90deg,var(--white) 45%,var(--ivory) 100%);padding:76px 0}
+.hero .raster{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero p.unter{font-size:1.08rem;color:var(--muted);max-width:36em;margin:20px 0 28px}
+.hero .cta-reihe{display:flex;flex-wrap:wrap;gap:14px}
+.hero img{width:100%;aspect-ratio:5/4;object-fit:cover;box-shadow:var(--shadow);display:block}
+.merkmale{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:26px;font-size:.88rem;font-weight:600;color:var(--ink)}
+.merkmale li{padding-left:26px;position:relative}
+.merkmale li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+
+.kastenweiss{
+  background:var(--white);border:1px solid var(--line);border-top:4px solid var(--gold);
+  box-shadow:var(--shadow);padding:38px 42px;margin-top:-46px;position:relative;z-index:5;
+}
+.kastenweiss h2{font-size:1.4rem}
+.kastenweiss ul{margin-top:14px;display:grid;gap:13px}
+.kastenweiss li{padding-left:32px;position:relative;font-size:.98rem}
+.kastenweiss li::before{content:"✓";position:absolute;left:0;top:0;color:var(--gold);font-weight:800;font-size:1.05rem}
+
+.stimmen{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:38px}
+.stimme{background:var(--white);box-shadow:var(--shadow);border-left:4px solid var(--gold);padding:30px}
+.stimme blockquote{font-size:.98rem;color:var(--body);margin-bottom:14px}
+.stimme figcaption{font-size:.86rem;color:var(--muted);font-weight:600}
+.platzhalter{
+  background:#FFF8E1;border:1.5px dashed var(--gold);color:var(--ink);
+  padding:14px 16px;font-size:.86rem;margin:0 0 14px;
+}
+.platzhalter strong{color:var(--gold-dark)}
+
+.team{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:38px}
+.person{
+  background:var(--white);box-shadow:var(--shadow);display:flex;flex-direction:column;
+  overflow:hidden;transition:transform .2s ease,box-shadow .2s ease;
+}
+.person:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(39,37,42,.13)}
+.person picture{overflow:hidden}
+.person img{transition:transform .5s ease}
+.person:hover img{transform:scale(1.04)}
+.person img{width:100%;aspect-ratio:1/1;object-fit:cover;object-position:top;display:block}
+.person .text{padding:22px 20px;display:flex;flex-direction:column;gap:4px}
+.person h3{font-size:1.02rem;margin:0}
+.person .rolle{font-size:.84rem;color:var(--gold-dark);font-weight:600}
+/* Kontaktzeilen: Symbol plus kurze Beschriftung. Die volle E-Mail-Adresse
+   stand vorher im Text und ist auf schmalen Karten umgebrochen. */
+.kontaktlink{
+  display:inline-flex;align-items:center;gap:9px;font-size:.88rem;color:var(--muted);
+  text-decoration:none;white-space:nowrap;padding:3px 0;min-height:32px;
+}
+.kontaktlink svg{width:16px;height:16px;flex:none;color:var(--gold)}
+.kontaktlink span{overflow:hidden;text-overflow:ellipsis}
+.kontaktlink:hover,.kontaktlink:focus-visible{color:var(--gold-dark)}
+.kontaktlink:hover svg{color:var(--gold-dark)}
+
+/* FAQ */
+.faq-raster{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;align-items:start;margin-top:8px}
+.faq-spalte{display:flex;flex-direction:column;gap:14px}
+.faq-eintrag{background:var(--white);border:1px solid var(--line);box-shadow:var(--shadow)}
+.faq-eintrag summary{
+  list-style:none;cursor:pointer;padding:19px 22px;display:flex;justify-content:space-between;
+  gap:14px;align-items:center;
+}
+.faq-eintrag summary::-webkit-details-marker{display:none}
+.faq-eintrag summary::after{content:"+";font-size:1.4rem;color:var(--gold);transition:transform .2s;flex:none;font-weight:600}
+.faq-eintrag[open] summary::after{transform:rotate(45deg)}
+.faq-eintrag summary h3{font:inherit;font-weight:600;color:var(--ink);font-size:.98rem;margin:0;display:inline}
+.faq-eintrag .antwort{padding:0 22px 20px;color:var(--muted);font-size:.94rem}
+
+/* ===== 5 Kontakt und Formular =========================================== */
+.kontakt{background:linear-gradient(90deg,var(--bluetint) 0%,var(--ivory) 100%)}
+.kontakt .raster{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.kontakt ul.punkte{display:grid;gap:14px;margin-top:22px}
+.kontakt ul.punkte li{padding-left:30px;position:relative;font-size:.96rem}
+.kontakt ul.punkte li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+.kontaktdaten{margin-top:26px;font-size:.95rem;display:grid;gap:6px}
+.kontaktdaten a{text-decoration:none}
+.kontaktdaten a:hover{text-decoration:underline}
+
+/* Bild unter den Kontaktdaten. Fuellt die freie Flaeche neben dem Formular
+   und zeigt, wo man landet, wenn man den Termin wahrnimmt. */
+.kontaktbild{margin-top:30px}
+.kontaktbild img{display:block;width:100%;height:auto;box-shadow:var(--shadow)}
+.kontaktbild figcaption{
+  margin-top:10px;font-size:.85rem;color:var(--muted);line-height:1.5;
+}
+
+form.anfrage{background:var(--white);padding:38px;box-shadow:var(--shadow)}
+form.anfrage h3{font-size:1.3rem}
+.feldreihe{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.feld{margin-top:16px}
+.feld label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--ink)}
+.feld label .pflicht{color:var(--no)}
+.feld input,.feld select,.feld textarea{
+  width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:5px;
+  font-size:.95rem;font-family:var(--font);background:#fff;color:var(--ink);min-height:44px;
+}
+.feld textarea{min-height:120px;resize:vertical}
+.feld input:focus-visible,.feld select:focus-visible,.feld textarea:focus-visible{border-color:var(--gold)}
+.feld .fehler{display:none;color:var(--no);font-size:.82rem;margin-top:5px;font-weight:600}
+.feld.ungueltig .fehler{display:block}
+.feld.ungueltig input,.feld.ungueltig select,.feld.ungueltig textarea{border-color:var(--no)}
+.einwilligung-feld{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-size:.82rem;color:var(--muted)}
+.einwilligung-feld input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--gold);min-height:auto}
+form.anfrage .btn{width:100%;margin-top:22px}
+.formhinweis{font-size:.8rem;color:var(--muted);margin-top:14px;text-align:center}
+.danke{display:none;text-align:center;padding:40px 10px}
+.danke.sichtbar{display:block}
+.danke .zeichen{font-size:2.6rem;color:var(--gold)}
+
+/* ===== 6 Fuss =========================================================== */
+body > footer.seite{background:linear-gradient(90deg,var(--bluetint) 0%,var(--ivory) 100%);color:var(--body);font-size:.92rem}
+body > footer.seite .spalten{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;padding:56px 0 40px}
+body > footer.seite h3{font-size:1.2rem;margin-bottom:12px}
+body > footer.seite a{color:var(--body);text-decoration:none}
+body > footer.seite a:hover,body > footer.seite a:focus-visible{color:var(--gold-dark)}
+body > footer.seite ul{display:grid;gap:6px}
+.fusshinweis{font-size:.79rem;color:var(--muted);max-width:70em;padding-bottom:30px}
+.copyleiste{background:var(--gold);color:#fff;text-align:center;padding:14px 20px;font-size:.85rem}
+.copyleiste a{color:#fff;text-decoration:underline}
+.copyleiste a:hover{color:var(--ivory)}
+.sozial{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.sozial a{
+  display:inline-flex;align-items:center;min-height:40px;padding:8px 18px;
+  border:1.5px solid var(--line);border-radius:999px;background:var(--white);
+  color:var(--ink);font-size:.85rem;font-weight:600;text-decoration:none;
+  transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
+}
+/* Hoehere Gewichtung als die allgemeine Fusszeilen-Regel, sonst gewinnt
+   deren Goldton und die Beschriftung verschwindet im goldenen Hintergrund. */
+body > footer.seite .sozial a:hover,
+body > footer.seite .sozial a:focus-visible{
+  background:var(--gold);color:#fff;border-color:var(--gold);transform:translateY(-1px);
+}
+
+/* Mobile CTA-Leiste */
+.mobil-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--gold);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+  display:none;align-items:center;justify-content:space-between;gap:12px;
+  box-shadow:0 -6px 20px rgba(0,0,0,.18);
+}
+.mobil-cta span{color:#fff;font-size:.78rem;line-height:1.35;font-weight:600}
+.mobil-cta a.btn{background:#fff;color:var(--gold-dark);border-color:#fff}
+.mobil-cta a.btn:hover,.mobil-cta a.btn:focus-visible{background:var(--ivory);color:var(--gold-dark);border-color:var(--ivory)}
+
+/* ===== 7 Rechtsseiten =================================================== */
+.rechtstext{padding:60px 0 80px}
+.rechtstext h1{margin-bottom:24px}
+.rechtstext h2{font-size:1.5rem;margin-top:40px}
+.rechtstext h3{font-size:1.1rem;margin-top:26px}
+.rechtstext p,.rechtstext li{font-size:.97rem}
+.rechtstext ul.liste{list-style:disc;margin:0 0 1em 1.3em}
+.rechtstext ul.liste li{margin-bottom:.4em}
+.hinweiskasten{
+  background:var(--gold-tint);border-left:4px solid var(--gold);padding:20px 24px;margin-bottom:32px;font-size:.93rem;
+}
+.luecke{background:#FFF3B0;padding:1px 6px;font-weight:600;color:#6B5200}
+.brotkrumen{font-size:.85rem;color:var(--muted);padding:18px 0 0}
+.brotkrumen a{color:var(--muted);text-decoration:none}
+.brotkrumen a:hover{color:var(--gold-dark)}
+
+/* ===== 8 Responsive ===================================================== */
+@media(max-width:1180px){
+  .karten.vier{grid-template-columns:repeat(2,1fr)}
+  .team{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:1024px){
+  nav.haupt{
+    display:none;position:absolute;top:var(--kopfhoehe);left:0;right:0;
+    background:var(--white);flex-direction:column;align-items:stretch;gap:0;
+    padding:10px 20px 20px;box-shadow:0 12px 24px rgba(0,0,0,.12);
+  }
+  nav.haupt[data-offen="true"]{display:flex}
+  nav.haupt a{padding:13px 4px;border-bottom:1px solid var(--line)}
+  nav.haupt a.btn{margin-top:14px;text-align:center;border-bottom:none}
+  .burger{display:flex}
+  header.seite .leiste{padding:0 20px}
+  .hero .raster,.kontakt .raster{grid-template-columns:1fr}
+  .schritte{grid-template-columns:1fr}
+  .kastenweiss{margin-top:0;padding:30px 26px}
+}
+@media(max-width:820px){
+  section{padding:64px 0}
+  .vorteile,.stimmen,.faq-raster,.karten.drei,.karten.zwei{grid-template-columns:1fr}
+  .team{grid-template-columns:repeat(2,1fr)}
+  body > footer.seite .spalten{grid-template-columns:1fr}
+}
+@media(max-width:620px){
+  .karten.vier{grid-template-columns:1fr}
+  .team{grid-template-columns:1fr}
+  .feldreihe{grid-template-columns:1fr}
+  form.anfrage{padding:26px 22px}
+  .mobil-cta{display:flex}
+  body{padding-bottom:74px}
+  .logo img{height:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+@media print{
+  header.seite,.mobil-cta,.goldband,form.anfrage{display:none!important}
+  body{font-size:11pt}
+}
+
+/* ===== 9 Barrierefreiheits-Knopf und mobile CTA-Leiste =================
+   Solange die CTA-Leiste am unteren Rand steht, wird der runde Knopf
+   nach oben geschoben. Sonst verdeckt er den Anfragen-Button. */
+@media(max-width:620px){
+  .bf-knopf{bottom:84px!important}
+}
+
+
+/* ===== 10 Leichtere Bausteine ==========================================
+   Weniger Fliesstext, mehr Bild. Icons tragen die Aussage, der Text
+   darunter ist auf eine Zeile gekuerzt. */
+
+/* Faktenleiste direkt unter dem Hero */
+.fakten{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+  border:1px solid var(--line);box-shadow:var(--shadow);margin-top:-46px;position:relative;z-index:5;
+}
+.fakt{background:var(--white);padding:28px 22px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:6px}
+.fakt .icon{color:var(--gold);line-height:0}
+.fakt .icon svg{width:32px;height:32px}
+.fakt .zahl{font-size:1.75rem;font-weight:700;color:var(--ink);line-height:1.1}
+.fakt .zahl .klein{font-size:.95rem;font-weight:600}
+.fakt p{font-size:.85rem;color:var(--muted);margin:0;line-height:1.45}
+@media(max-width:820px){.fakten{grid-template-columns:repeat(2,1fr);margin-top:0}}
+@media(max-width:420px){.fakten{grid-template-columns:1fr}}
+
+/* Icon-Kreis fuer Vorteile und Schritte */
+.icon-kreis{
+  width:56px;height:56px;border-radius:50%;flex:none;
+  background:var(--gold-tint);color:var(--gold-dark);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.icon-kreis svg{width:26px;height:26px}
+.vorteil:hover .icon-kreis,.karte:hover .icon{transition:color .2s ease}
+
+/* Kurze Merksaetze statt Absaetze */
+.karte p,.vorteil p,.schritt p{font-size:.95rem;line-height:1.6}
+.lead{font-size:1.02rem}
+
+/* Schritte: Bild bleibt, Text auf zwei Zeilen */
+.schritt .text{padding:24px 26px 26px}
+.schritt .text h3{display:flex;align-items:center;gap:10px}
+.schritt .text h3 .nr{
+  width:30px;height:30px;border-radius:50%;background:var(--gold);color:#fff;flex:none;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:800;
+}
+.schritt .text::before{content:none}
+
+
+/* ===== 11 Videos ========================================================
+   Vor dem Klick wird nichts geladen: sichtbar ist nur ein Vorschaubild.
+   Erst der Klick setzt die Quelle und startet die Wiedergabe. Damit kostet
+   das Video beim Seitenaufruf keine einzige Anfrage. */
+.videoflaeche{position:relative;display:block;width:100%}
+.videoflaeche img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;box-shadow:var(--shadow)}
+.person .videoflaeche img,.stimme .videoflaeche img{box-shadow:none}
+
+.abspielen{
+  position:absolute;inset:0;width:100%;height:100%;border:0;cursor:pointer;
+  background:linear-gradient(180deg,rgba(39,37,42,0) 45%,rgba(39,37,42,.72) 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;
+  gap:2px;padding:20px 22px;font-family:var(--font);text-align:left;
+  transition:background .25s ease;
+}
+.abspielen:hover,.abspielen:focus-visible{background:linear-gradient(180deg,rgba(39,37,42,.1) 30%,rgba(39,37,42,.8) 100%)}
+.abspielen .kreis{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:76px;height:76px;border-radius:50%;background:var(--gold);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;padding-left:5px;
+  box-shadow:0 10px 30px rgba(39,37,42,.35);transition:transform .22s ease,background .22s ease;
+}
+.abspielen:hover .kreis,.abspielen:focus-visible .kreis{transform:translate(-50%,-50%) scale(1.08);background:var(--gold-dark)}
+.abspielen .titel{color:#fff;font-weight:700;font-size:1rem;line-height:1.3}
+.abspielen .dauer{color:rgba(255,255,255,.82);font-weight:500;font-size:.82rem}
+@media(max-width:620px){.abspielen .kreis{width:60px;height:60px;font-size:1.2rem}}
+
+/* Lichtkasten */
+.videokasten{
+  position:fixed;inset:0;z-index:200;background:rgba(27,25,30,.92);
+  display:none;align-items:center;justify-content:center;padding:24px;
+}
+.videokasten[data-offen="true"]{display:flex}
+.videokasten video{
+  max-height:86vh;max-width:min(94vw,1280px);width:100%;background:#000;
+  box-shadow:0 24px 70px rgba(0,0,0,.55);
+}
+.videokasten.hoch video{max-width:min(94vw,430px)}
+.videokasten .zu{
+  position:absolute;top:16px;right:20px;background:none;border:0;color:#fff;
+  font-size:2.4rem;line-height:1;cursor:pointer;font-family:var(--font);padding:4px 12px;
+}
+.videokasten .zu:hover,.videokasten .zu:focus-visible{color:var(--gold)}
+
+/* Kundenstimmen als Videokarten */
+.stimme{display:flex;flex-direction:column;gap:0;padding:0;border-left:0;overflow:hidden}
+.stimme .text{padding:24px 26px 26px}
+.stimme .text h3{font-size:1.05rem;margin-bottom:4px}
+.stimme .text p{font-size:.94rem;color:var(--muted);margin:0}
+
+
+/* ===== 12 Bewertungs-Baustein ==========================================
+   Sitzt im Hero unter den Knöpfen, wie auf ao-consult.de. Bewusst OHNE
+   aggregateRating in den strukturierten Daten: Google-Rezensionen als eigene
+   Bewertungen auszuzeichnen kann eine manuelle Maßnahme auslösen. Die Zahlen
+   stehen nur sichtbar auf der Seite und verlinken auf das Profil. */
+.bewertung{
+  display:inline-flex;align-items:center;gap:16px;margin-top:30px;
+  text-decoration:none;color:inherit;
+}
+.bewertung .marke{
+  flex:none;width:54px;height:54px;border-radius:50%;background:var(--white);
+  border:1px solid var(--line);box-shadow:0 2px 12px rgba(39,37,42,.12);
+  display:grid;place-items:center;line-height:0;
+}
+.bewertung .marke svg{width:28px;height:28px;display:block}
+.bewertung .marke picture,.bewertung .marke img{display:block}
+/* Das Zeichen bleibt unveraendert, nur skaliert, mit Schutzraum im Kreis. */
+.bewertung .marke img{width:26px;height:26px}
+@media(max-width:620px){.bewertung .marke img{width:22px;height:22px}}
+.bewertung .zeile1{display:flex;align-items:center;gap:10px;line-height:1.2}
+.bewertung .sterne{color:#E8B21F;letter-spacing:.08em;font-size:1.2rem;line-height:1}
+.bewertung .wert{font-weight:700;font-size:1.2rem;color:var(--ink);white-space:nowrap}
+.bewertung .quelle{display:block;font-size:.88rem;color:var(--muted);margin:6px 0 0;line-height:1.4}
+.bewertung:hover .wert,.bewertung:focus-visible .wert{color:var(--gold-dark)}
+.bewertung:hover .quelle{color:var(--ink)}
+@media(max-width:620px){
+  .bewertung{gap:12px;margin-top:24px}
+  .bewertung .marke{width:44px;height:44px}
+  .bewertung .marke svg{width:22px;height:22px}
+  .bewertung .wert{font-size:1.05rem}
+  .bewertung .quelle{font-size:.8rem}
+}
+
+
+/* ===== 13 Hinweis auf die Unterseite PKV oder GKV =======================
+   Eigener Abschnitt, damit die Unterseite auf der Startseite nicht
+   untergeht. Die ganze Karte reagiert auf den Zeiger, angeklickt wird
+   trotzdem ein echter Link. */
+.wegweiser{background:linear-gradient(90deg,var(--ink) 0%,#3A363F 100%);color:#fff}
+.wegweiser .raster{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
+.wegweiser h2{color:#fff}
+.wegweiser .mark{color:var(--gold)}
+.wegweiser .kicker{color:var(--gold)}
+.wegweiser p.lead{color:rgba(255,255,255,.82);max-width:40em}
+.wegweiser ul{display:grid;gap:12px;margin:26px 0 30px}
+.wegweiser li{padding-left:30px;position:relative;font-size:.98rem;color:rgba(255,255,255,.92)}
+.wegweiser li::before{content:"✓";position:absolute;left:0;color:var(--gold);font-weight:800}
+.wegweiser .karte{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);
+  padding:30px 32px;display:grid;gap:18px;
+}
+.wegweiser .karte .zeile{display:flex;justify-content:space-between;align-items:baseline;gap:16px;font-size:.95rem}
+.wegweiser .karte .zeile span:first-child{color:rgba(255,255,255,.75)}
+.wegweiser .karte .zeile b{color:#fff;font-weight:700;text-align:right}
+.wegweiser .karte .trenner{height:1px;background:rgba(255,255,255,.14)}
+.wegweiser .karte .fuss{font-size:.84rem;color:rgba(255,255,255,.6)}
+@media(max-width:900px){.wegweiser .raster{grid-template-columns:1fr;gap:32px}}
+
+
+/* ===== 14 Wistia mit vorgeschalteter Einwilligung =======================
+   Vor dem Klick liegt nur unser eigenes Standbild auf der Seite. Erst die
+   Zustimmung laedt den Player von fast.wistia.com nach. */
+.videoflaeche.wistia-aktiv{aspect-ratio:16/9;background:#000}
+.videoflaeche.wistia-aktiv wistia-player{display:block;width:100%}
+.videoeinwilligung{
+  position:absolute;inset:0;z-index:4;background:rgba(27,25,30,.93);color:#fff;
+  display:flex;flex-direction:column;justify-content:center;gap:14px;
+  padding:26px 30px;text-align:left;
+}
+/* display:flex ueberschreibt sonst die Voreinstellung von [hidden]. Ohne
+   diese Zeile liegt die unsichtbare Frage ueber dem Abspielknopf und
+   schluckt den Klick. */
+.videoeinwilligung[hidden]{display:none}
+.videoeinwilligung p{font-size:.9rem;line-height:1.6;color:rgba(255,255,255,.88);margin:0}
+.videoeinwilligung strong{color:#fff}
+.videoeinwilligung a{color:var(--gold)}
+.videoeinwilligung .reihe{display:flex;flex-wrap:wrap;gap:12px;margin-top:4px}
+.videoeinwilligung button{align-self:flex-start}
+@media(max-width:620px){
+  .videoeinwilligung{padding:18px 20px;gap:10px}
+  .videoeinwilligung p{font-size:.82rem}
+}

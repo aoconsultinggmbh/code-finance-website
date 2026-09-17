@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Adressen vor dem Livegang auf die endgueltige Domain und Slug-Struktur pruefen. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://codefinance.de/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://codefinance.de/servicepakete/</loc>
+    <lastmod>2026-09-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://codefinance.de/pkv-oder-gkv/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://codefinance.de/impressum/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.2</priority>
+  </url>
+  <url>
+    <loc>https://codefinance.de/datenschutz/</loc>
+    <lastmod>2026-09-15</lastmod>
+    <priority>0.2</priority>
+  </url>
+</urlset>
