@@ -175,8 +175,10 @@
       b.addEventListener('click', function () {
         var flaeche = b.closest('.videoflaeche');
         var knopf = flaeche.querySelector('.abspielen');
-        if (window.aoEinwilligung) window.aoEinwilligung.setze('videos', true);
+        /* Zuerst der angeklickte Film, damit er wirklich losspielt. Erst danach
+           die Einwilligung merken, sonst laedt das Vorladen ihn stumm vorweg. */
         wistiaLaden(flaeche, knopf.getAttribute('data-wistia'), knopf.getAttribute('data-aspect'), true);
+        if (window.aoEinwilligung) window.aoEinwilligung.setze('videos', true);
         alleWistiaVorladen();
       });
     });
