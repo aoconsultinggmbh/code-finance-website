@@ -160,6 +160,11 @@
       var spieler = document.createElement('wistia-player');
       spieler.setAttribute('media-id', kennung);
       spieler.setAttribute('aspect', seitenverhaeltnis || '1.7777777777777777');
+      /* Der Player rundet seine Ecken von sich aus mit 12 px ab. Das passt nicht
+         zur Seite, auf der alle Bildkanten scharf sind. Die Rundung steckt im
+         Shadow DOM und laesst sich von aussen nicht per CSS erreichen, wohl aber
+         ueber dieses Attribut. */
+      spieler.setAttribute('border-radius', '0');
       /* Nur wenn jemand wirklich auf Abspielen geklickt hat. Beim stillen
          Vorabladen nach erteilter Einwilligung startet nichts von selbst. */
       if (sofortAbspielen) spieler.setAttribute('autoplay', 'true');
