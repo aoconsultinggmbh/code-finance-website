@@ -583,3 +583,9 @@ body > footer.seite .sozial a:focus-visible{
   .videoeinwilligung{padding:18px 20px;gap:10px}
   .videoeinwilligung p{font-size:.82rem}
 }
+
+/* Honigtopf im Kontaktformular. Nicht display:none, das ueberspringen manche
+   Bots gezielt. Aus dem Sichtfeld schieben wirkt zuverlaessiger. */
+.honigtopf{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.danke-zeichen{display:flex;align-items:center;justify-content:center;width:64px;height:64px;
+  border-radius:50%;background:var(--gold);color:#fff;font-size:2rem;margin:0 0 20px}

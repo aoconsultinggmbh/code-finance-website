@@ -62,14 +62,21 @@
   }
 
   /* ===== 3 Formular ====================================================
-     Der Entwurf verschickt nichts. Pflichtfelder werden geprueft, danach
-     erscheint die Danke-Ansicht. Beim Einbau wird unten der echte Endpunkt
-     gesetzt, siehe LIESMICH.md, Abschnitt "Formular anbinden".
+     Auf der echten Domain schickt das Formular die Anfrage an
+     anfrage-senden.php und landet danach auf danke.html. Auf der Vorschau
+     gibt es kein PHP, dort bleibt es bei der Danke-Ansicht auf der Seite.
      ==================================================================== */
   var formular = document.querySelector('form.anfrage');
 
   if (formular) {
     var danke = document.querySelector('.danke');
+    var ohnePhp = /vorschau\.ao-consult\.de$/.test(location.hostname)
+                  || location.hostname.endsWith('.github.io')
+                  || location.protocol === 'file:';
+
+    /* Zeitstempel fuer die Bot-Erkennung im PHP. */
+    var gestartet = formular.querySelector('input[name="gestartet"]');
+    if (gestartet) gestartet.value = Math.floor(Date.now() / 1000);
 
     formular.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -86,6 +93,11 @@
 
       if (fehlerhaft) {
         fehlerhaft.focus();
+        return;
+      }
+
+      if (!ohnePhp) {
+        formular.submit();          // umgeht diesen Handler, schickt an das PHP
         return;
       }
 

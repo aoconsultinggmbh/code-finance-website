@@ -85,7 +85,30 @@
         "addressRegion": "Baden-Württemberg",
         "addressCountry": "DE"
       },
-      "areaServed": "DE",
+      "areaServed": [
+        { "@type": "City", "name": "Karlsruhe" },
+        { "@type": "City", "name": "Ettlingen" },
+        { "@type": "City", "name": "Bruchsal" },
+        { "@type": "City", "name": "Rheinstetten" },
+        { "@type": "City", "name": "Stutensee" },
+        { "@type": "City", "name": "Waldbronn" },
+        { "@type": "AdministrativeArea", "name": "Landkreis Karlsruhe" },
+        { "@type": "Country", "name": "Deutschland" }
+      ],
+      "image": "https://codefinance.de/img/codefinance-karlsruhe-buero-team-hintergrund.jpg",
+      "logo": "https://codefinance.de/img/codefinance-logo-quer.png",
+      "priceRange": "Erstgespräch kostenfrei",
+      "currenciesAccepted": "EUR",
+      "hasMap": "https://www.google.com/maps/search/?api=1&query=CODE+FINANCE+GmbH+Tullastra%C3%9Fe+58+76131+Karlsruhe",
+      "knowsAbout": [
+        "Private Krankenversicherung",
+        "Gesetzliche Krankenversicherung",
+        "Berufsunfähigkeitsversicherung",
+        "Baufinanzierung",
+        "Betriebliche Altersvorsorge",
+        "Gewerbeversicherung",
+        "Vermögensaufbau mit Fonds und ETF"
+      ],
       "description": "Anbieterübergreifende Beratung zu Versicherungen, Krankenversicherung, Baufinanzierung, gewerblichen Lösungen und Vermögensaufbau in Karlsruhe.",
       "sameAs": [
         "https://www.facebook.com/code.finance",
@@ -737,7 +760,7 @@
 
         <div>
           <!-- Entwurf: Das Formular verschickt nichts. Endpunkt siehe LIESMICH.md -->
-          <form class="anfrage" novalidate>
+          <form class="anfrage" action="anfrage-senden.php" method="post" novalidate>
             <h3>Anfrage senden</h3>
             <div class="feldreihe">
               <div class="feld">
@@ -779,6 +802,12 @@
               <label for="nachricht">Ihre Nachricht</label>
               <textarea id="nachricht" name="nachricht" rows="4" placeholder="Kurz in zwei, drei Sätzen: worum geht es und bis wann brauchen Sie eine Antwort?"></textarea>
             </div>
+            <!-- Honigtopf gegen Bots. Fuer Menschen unsichtbar und nicht anspringbar. -->
+            <div class="honigtopf" aria-hidden="true">
+              <label for="webseite">Bitte dieses Feld frei lassen</label>
+              <input type="text" id="webseite" name="webseite" tabindex="-1" autocomplete="off">
+            </div>
+            <input type="hidden" name="gestartet" value="">
             <div class="einwilligung-feld">
               <input type="checkbox" id="datenschutz" name="datenschutz" required>
               <label for="datenschutz">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin damit einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage verarbeitet werden. <span class="pflicht" aria-hidden="true">*</span></label>
