@@ -129,7 +129,7 @@
 
     /* Wistia laedt erst nach Einwilligung. Vorher steht nur unser eigenes
        Standbild auf der Seite, es geht keine Anfrage an fast.wistia.com. */
-    function wistiaLaden(flaeche, kennung, seitenverhaeltnis) {
+    function wistiaLaden(flaeche, kennung, seitenverhaeltnis, sofortAbspielen) {
       if (flaeche.dataset.geladen) return;
       flaeche.dataset.geladen = '1';
       if (!document.querySelector('script[data-wistia-basis]')) {
@@ -148,6 +148,9 @@
       var spieler = document.createElement('wistia-player');
       spieler.setAttribute('media-id', kennung);
       spieler.setAttribute('aspect', seitenverhaeltnis || '1.7777777777777777');
+      /* Nur wenn jemand wirklich auf Abspielen geklickt hat. Beim stillen
+         Vorabladen nach erteilter Einwilligung startet nichts von selbst. */
+      if (sofortAbspielen) spieler.setAttribute('autoplay', 'true');
       flaeche.innerHTML = '';
       flaeche.appendChild(spieler);
       flaeche.classList.add('wistia-aktiv');
@@ -160,7 +163,7 @@
       var api = window.aoEinwilligung;
 
       if (api && api.erlaubt('videos')) {
-        wistiaLaden(flaeche, kennung, verhaeltnis);
+        wistiaLaden(flaeche, kennung, verhaeltnis, true);
         return;
       }
       var frage = flaeche.querySelector('.videoeinwilligung');
@@ -173,9 +176,27 @@
         var flaeche = b.closest('.videoflaeche');
         var knopf = flaeche.querySelector('.abspielen');
         if (window.aoEinwilligung) window.aoEinwilligung.setze('videos', true);
-        wistiaLaden(flaeche, knopf.getAttribute('data-wistia'), knopf.getAttribute('data-aspect'));
+        wistiaLaden(flaeche, knopf.getAttribute('data-wistia'), knopf.getAttribute('data-aspect'), true);
+        alleWistiaVorladen();
       });
     });
+
+    /* Liegt die Einwilligung fuer Videos vor, steht der Wistia-Player von
+       Anfang an in der Flaeche. Dann zeigt Wistia sein eigenes Standbild und
+       ein einziger Klick startet den Film, statt erst zu laden und dann noch
+       einmal auf Abspielen zu verlangen. */
+    function alleWistiaVorladen() {
+      var api = window.aoEinwilligung;
+      if (!api || !api.erlaubt('videos')) return;
+      document.querySelectorAll('.abspielen[data-wistia]').forEach(function (k) {
+        var flaeche = k.closest('.videoflaeche');
+        if (!flaeche || flaeche.dataset.geladen) return;
+        wistiaLaden(flaeche, k.getAttribute('data-wistia'), k.getAttribute('data-aspect'), false);
+      });
+    }
+
+    alleWistiaVorladen();
+    document.addEventListener('ao:einwilligung', alleWistiaVorladen);
 
     function videoAuf(knopf) {
       if (knopf.getAttribute('data-wistia')) { wistiaKlick(knopf); return; }
