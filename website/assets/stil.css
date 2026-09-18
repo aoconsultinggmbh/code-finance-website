@@ -315,6 +315,14 @@ body > footer.seite .copyleiste a:hover,body > footer.seite .copyleiste a:focus-
   transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease;
 }
 .sozial-symbol{width:19px;height:19px;flex:0 0 auto;display:block}
+/* WhatsApp-Knopf im Kopfbereich: gleiche Form wie die uebrigen Knoepfe,
+   nur das Symbol traegt die bekannte gruene Farbe. */
+.btn.wa{gap:9px}
+.wa-symbol{width:19px;height:19px;flex:0 0 auto;display:block;color:#1FA855}
+.btn.wa:hover .wa-symbol,.btn.wa:focus-visible .wa-symbol{color:inherit}
+body > footer.seite .sozial a[href*="wa.me"] .sozial-symbol{color:#1FA855}
+body > footer.seite .sozial a[href*="wa.me"]:hover .sozial-symbol,
+body > footer.seite .sozial a[href*="wa.me"]:focus-visible .sozial-symbol{color:inherit}
 /* Hoehere Gewichtung als die allgemeine Fusszeilen-Regel, sonst gewinnt
    deren Goldton und die Beschriftung verschwindet im goldenen Hintergrund. */
 body > footer.seite .sozial a:hover,
