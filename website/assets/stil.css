@@ -563,7 +563,9 @@ body > footer.seite .sozial a:focus-visible{
 /* ===== 14 Wistia mit vorgeschalteter Einwilligung =======================
    Vor dem Klick liegt nur unser eigenes Standbild auf der Seite. Erst die
    Zustimmung laedt den Player von fast.wistia.com nach. */
-.videoflaeche.wistia-aktiv{background:#000}
+/* Kein schwarzer Kasten hinter dem Player. Waehrend er laedt und an den
+   Kanten sieht man so den Seitenhintergrund statt einer dunklen Flaeche. */
+.videoflaeche.wistia-aktiv{background:transparent}
 .videoflaeche.wistia-aktiv wistia-player{display:block;width:100%}
 .videoeinwilligung{
   position:absolute;inset:0;z-index:4;background:rgba(27,25,30,.93);color:#fff;
