@@ -3,9 +3,8 @@
 # Auf der GitHub-Vorschau wird diese Datei ignoriert - sie wirkt erst,
 # wenn die Seite beim Hoster liegt.
 #
-# VOR DEM LIVEGANG: die Umleitung unten freischalten (Raute entfernen) und
-# DOMAIN durch die echte Domain ersetzen. Vorher bitte nicht - eine falsche
-# Umleitung macht die Seite unerreichbar.
+# Die Umleitung auf https://codefinance.de ist seit 02.10.2026 eingeschaltet.
+# Sie wirkt erst, wenn die Domain auf All-Inkl zeigt.
 # ---------------------------------------------------------------------------
 
 RewriteEngine On
@@ -20,10 +19,16 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} \.kasserver\.com$ [NC]
 RewriteRule ^ - [L]
 
-# --- Immer https und immer www (erst am Livegang-Tag freischalten) ---------
-# RewriteCond %{HTTPS} !=on [OR]
-# RewriteCond %{HTTP_HOST} !^www\. [NC]
-# RewriteRule ^(.*)$ https://www.DOMAIN/$1 [R=301,L]
+# --- Zertifikatspruefung von Let's Encrypt nie umleiten -------------------
+RewriteRule ^\.well-known/ - [L]
+
+# --- Immer https und immer ohne www: Hauptadresse ist https://codefinance.de
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^(.*)$ https://codefinance.de/$1 [R=301,L]
+
+# --- Kurze Adressen (z. B. /servicepakete/) auf die echte Seite schicken ---
+RewriteRule ^(servicepakete|pkv-oder-gkv|impressum|datenschutz|erstinformation|gleichstellungshinweis)/?$ /$1.html [R=301,L]
 
 ErrorDocument 404 /index.html
 

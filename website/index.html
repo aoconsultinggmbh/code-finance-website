@@ -799,7 +799,7 @@
         </div>
 
         <div>
-          <!-- Entwurf: Das Formular verschickt nichts. Endpunkt siehe LIESMICH.md -->
+          <!-- Formular: verschickt auf der echten Domain ueber anfrage-senden.php an info@codefinance.de -->
           <form class="anfrage" action="anfrage-senden.php" method="post" novalidate>
             <h3>Anfrage senden</h3>
             <div class="feldreihe">
@@ -847,6 +847,7 @@
               <label for="webseite">Bitte dieses Feld frei lassen</label>
               <input type="text" id="webseite" name="webseite" tabindex="-1" autocomplete="off">
             </div>
+            <input type="hidden" name="formular" value="kontakt">
             <input type="hidden" name="gestartet" value="">
             <div class="einwilligung-feld">
               <input type="checkbox" id="datenschutz" name="datenschutz" required>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Adressen vor dem Livegang auf die endgueltige Domain und Slug-Struktur pruefen. -->
+<!-- Adressen geprueft 02.10.2026: Hauptadresse https://codefinance.de, Seiten als .html -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://codefinance.de/</loc>
@@ -7,32 +7,32 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://codefinance.de/servicepakete/</loc>
+    <loc>https://codefinance.de/servicepakete.html</loc>
     <lastmod>2026-09-16</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://codefinance.de/pkv-oder-gkv/</loc>
+    <loc>https://codefinance.de/pkv-oder-gkv.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://codefinance.de/impressum/</loc>
+    <loc>https://codefinance.de/impressum.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://codefinance.de/datenschutz/</loc>
+    <loc>https://codefinance.de/datenschutz.html</loc>
     <lastmod>2026-09-15</lastmod>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://codefinance.de/erstinformation/</loc>
+    <loc>https://codefinance.de/erstinformation.html</loc>
     <lastmod>2026-09-18</lastmod>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://codefinance.de/gleichstellungshinweis/</loc>
+    <loc>https://codefinance.de/gleichstellungshinweis.html</loc>
     <lastmod>2026-09-18</lastmod>
     <priority>0.2</priority>
   </url>

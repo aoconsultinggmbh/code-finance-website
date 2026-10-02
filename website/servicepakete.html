@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Servicepakete: Basis, Plus und Premium | CODE FINANCE</title>
 <meta name="description" content="Wie viel Betreuung brauchen Sie? Basis ist kostenfrei, Plus kostet 180 € und Premium 600 € im Jahr. Alle Leistungen im direkten Vergleich, transparent erklärt.">
-<link rel="canonical" href="https://codefinance.de/servicepakete/">
+<link rel="canonical" href="https://codefinance.de/servicepakete.html">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="CODE FINANCE">
 <meta property="og:title" content="Servicepakete: Basis, Plus und Premium im Vergleich">
 <meta property="og:description" content="Wie viel Betreuung brauchen Sie? Basis kostenfrei, Plus 180 € und Premium 600 € im Jahr. Alle Leistungen im direkten Vergleich.">
-<meta property="og:url" content="https://codefinance.de/servicepakete/">
+<meta property="og:url" content="https://codefinance.de/servicepakete.html">
 <meta property="og:image" content="https://codefinance.de/img/codefinance-karlsruhe-begleitung-betreuung.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Servicepakete: Basis, Plus und Premium im Vergleich">
@@ -35,8 +35,8 @@
     },
     {
       "@type": "WebPage",
-      "@id": "https://codefinance.de/servicepakete/#webpage",
-      "url": "https://codefinance.de/servicepakete/",
+      "@id": "https://codefinance.de/servicepakete.html#webpage",
+      "url": "https://codefinance.de/servicepakete.html",
       "name": "Servicepakete: Basis, Plus und Premium im Vergleich",
       "inLanguage": "de-DE",
       "isPartOf": { "@id": "https://codefinance.de/#organization" },
@@ -48,12 +48,12 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://codefinance.de/" },
-        { "@type": "ListItem", "position": 2, "name": "Servicepakete", "item": "https://codefinance.de/servicepakete/" }
+        { "@type": "ListItem", "position": 2, "name": "Servicepakete", "item": "https://codefinance.de/servicepakete.html" }
       ]
     },
     {
       "@type": "Service",
-      "@id": "https://codefinance.de/servicepakete/#service",
+      "@id": "https://codefinance.de/servicepakete.html#service",
       "name": "Laufende Betreuung von Versicherungsverträgen",
       "serviceType": "Versicherungsbetreuung durch einen Versicherungsmakler",
       "provider": { "@id": "https://codefinance.de/#organization" },
@@ -654,9 +654,15 @@
       </ul>
     </div>
     <div>
-      <form class="lead-form" id="leadform" action="" method="post" novalidate>
-        <!-- [[PLATZHALTER: action="" auf Formular-Endpoint setzen, siehe LIESMICH.md]] -->
+      <form class="lead-form" id="leadform" action="anfrage-senden.php" method="post" novalidate>
         <div id="form-fields">
+          <input type="hidden" name="formular" value="servicepaket">
+          <input type="hidden" name="gestartet" value="">
+          <!-- Honigtopf gegen Bots. Fuer Menschen unsichtbar und nicht anspringbar. -->
+          <div class="honigtopf" aria-hidden="true">
+            <label for="f-webseite">Bitte dieses Feld frei lassen</label>
+            <input type="text" id="f-webseite" name="webseite" tabindex="-1" autocomplete="off">
+          </div>
           <h3>Paket unverbindlich besprechen <span class="pfeil" aria-hidden="true">&rarr;</span></h3>
           <p style="font-size:.88rem;color:var(--muted)">In einer Minute ausgefüllt. Keine Verpflichtung, keine Weitergabe Ihrer Daten. Nach dem Absenden meldet sich ein Berater von CODE FINANCE und stimmt einen Termin mit Ihnen ab.</p>
           <div class="f-row">
@@ -757,8 +763,9 @@
 </footer>
 
 <script>
-  /* Formular: prueft Pflichtfelder und zeigt danach die Danke-Ansicht.
-     Es verschickt nichts, der Endpunkt fehlt noch. Siehe LIESMICH.md. */
+  /* Formular: prueft Pflichtfelder und schickt die Anfrage auf der echten
+     Domain an anfrage-senden.php (danach danke.html). Auf der Vorschau gibt
+     es kein PHP, dort bleibt es bei der Danke-Ansicht auf der Seite. */
   (function () {
     var formular = document.getElementById('leadform');
     if (!formular) return;
@@ -766,6 +773,11 @@
     var danke = document.getElementById('form-success');
     var zustimmung = document.getElementById('f-consent');
     var zustimmungFehler = document.getElementById('consent-err');
+    var gestartet = formular.querySelector('input[name="gestartet"]');
+    if (gestartet) gestartet.value = Math.floor(Date.now() / 1000);
+    var ohnePhp = /vorschau\.ao-consult\.de$/.test(location.hostname)
+                  || location.hostname.endsWith('.github.io')
+                  || location.protocol === 'file:';
 
     formular.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -788,6 +800,8 @@
       }
 
       if (erstesFehlendes) { erstesFehlendes.focus(); return; }
+
+      if (!ohnePhp) { formular.submit(); return; }
 
       felder.style.display = 'none';
       danke.classList.add('visible');

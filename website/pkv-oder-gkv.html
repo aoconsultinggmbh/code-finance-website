@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PKV oder GKV? Der ehrliche Vergleich 2026 | CODE FINANCE</title>
 <meta name="description" content="PKV oder GKV: was passt zu Ihnen? Neutraler Vergleich mit aktuellen Rechengrößen: Beiträge, Leistungen, Wechsel & Rückkehr. Kostenlose, unabhängige Analyse von CODE FINANCE.">
-<link rel="canonical" href="https://codefinance.de/pkv-oder-gkv/">
+<link rel="canonical" href="https://codefinance.de/pkv-oder-gkv.html">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="de_DE">
 <meta property="og:site_name" content="CODE FINANCE">
 <meta property="og:title" content="PKV oder GKV? Der ehrliche Vergleich">
 <meta property="og:description" content="Neutraler, faktenbasierter Vergleich von privater und gesetzlicher Krankenversicherung: Beiträge, Leistungen, Wechsel und Rückkehr.">
-<meta property="og:url" content="https://codefinance.de/pkv-oder-gkv/">
+<meta property="og:url" content="https://codefinance.de/pkv-oder-gkv.html">
 <meta property="og:image" content="https://codefinance.de/img/codefinance-karlsruhe-finanzberatung-beratungsgespraech.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="PKV oder GKV? Der ehrliche Vergleich">
@@ -45,8 +45,8 @@
     },
     {
       "@type": "WebPage",
-      "@id": "https://codefinance.de/pkv-oder-gkv/#webpage",
-      "url": "https://codefinance.de/pkv-oder-gkv/",
+      "@id": "https://codefinance.de/pkv-oder-gkv.html#webpage",
+      "url": "https://codefinance.de/pkv-oder-gkv.html",
       "name": "PKV oder GKV? Der ehrliche Vergleich",
       "inLanguage": "de-DE",
       "isPartOf": { "@id": "https://codefinance.de/#organization" },
@@ -59,7 +59,7 @@
       "@type": "BreadcrumbList",
       "itemListElement": [
         { "@type": "ListItem", "position": 1, "name": "Startseite", "item": "https://codefinance.de/" },
-        { "@type": "ListItem", "position": 2, "name": "PKV oder GKV", "item": "https://codefinance.de/pkv-oder-gkv/" }
+        { "@type": "ListItem", "position": 2, "name": "PKV oder GKV", "item": "https://codefinance.de/pkv-oder-gkv.html" }
       ]
     },
     {
@@ -669,9 +669,15 @@
       </ul>
     </div>
     <div>
-      <form class="lead-form" id="leadform" action="" method="post" novalidate>
-        <!-- [[PLATZHALTER: action="" auf Formular-Endpoint des CMS/Providers setzen (z. B. Divi-Kontaktmodul, WordPress-Formular-Plugin, CRM-Webhook)]] -->
+      <form class="lead-form" id="leadform" action="anfrage-senden.php" method="post" novalidate>
         <div id="form-fields">
+          <input type="hidden" name="formular" value="pkv-vergleich">
+          <input type="hidden" name="gestartet" value="">
+          <!-- Honigtopf gegen Bots. Fuer Menschen unsichtbar und nicht anspringbar. -->
+          <div class="honigtopf" aria-hidden="true">
+            <label for="f-webseite">Bitte dieses Feld frei lassen</label>
+            <input type="text" id="f-webseite" name="webseite" tabindex="-1" autocomplete="off">
+          </div>
           <h3>Kostenlosen Vergleich starten <span class="pfeil" aria-hidden="true">&rarr;</span></h3>
           <p style="font-size:.88rem;color:var(--muted)">In einer Minute ausgefüllt. Keine Verpflichtung, keine Weitergabe Ihrer Daten. Nach dem Absenden meldet sich ein Berater von CODE FINANCE bei Ihnen und stimmt mit Ihnen einen Termin ab, telefonisch oder per E-Mail, ganz wie es Ihnen lieber ist.</p>
           <div class="f-row">
@@ -712,7 +718,6 @@
             <label for="f-consent" style="font-weight:400;margin:0">Ich habe die <a href="datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Bearbeitung meiner Anfrage einverstanden. <span class="req" aria-hidden="true">*</span></label>
           </div>
           <p class="err" id="consent-err" style="display:none;color:var(--no);font-size:.8rem">Bitte bestätigen Sie die Datenschutzerklärung.</p>
-          <!-- [[PLATZHALTER: Datenschutz-URL prüfen/anpassen]] -->
           <button class="btn" type="submit">Jetzt kostenlose Analyse anfordern</button>
           <p class="form-note">Unverbindlich · Kostenfrei · Antwort binnen 24 h an Werktagen</p>
         </div>
@@ -823,6 +828,8 @@ document.querySelectorAll('.myth > button').forEach(function(btn){
 // Formular-Validierung
 (function(){
   var form = document.getElementById('leadform');
+  var gestartet = form.querySelector('input[name="gestartet"]');
+  if (gestartet) gestartet.value = Math.floor(Date.now() / 1000);
   form.addEventListener('submit', function(e){
     e.preventDefault();
     var valid = true;
@@ -836,7 +843,12 @@ document.querySelectorAll('.myth > button').forEach(function(btn){
     cErr.style.display = consent.checked ? 'none' : 'block';
     if(!consent.checked) valid = false;
     if(!valid){ return; }
-    // [[PLATZHALTER: Hier echten Submit einbauen, fetch() an Endpoint oder form.submit() nach Setzen von action]]
+    // Auf der echten Domain an anfrage-senden.php schicken (danach danke.html).
+    // Auf der Vorschau gibt es kein PHP, dort bleibt es bei der Danke-Ansicht.
+    var ohnePhp = /vorschau\.ao-consult\.de$/.test(location.hostname)
+                  || location.hostname.endsWith('.github.io')
+                  || location.protocol === 'file:';
+    if(!ohnePhp){ form.submit(); return; }
     document.getElementById('form-fields').style.display = 'none';
     document.getElementById('form-success').style.display = 'block';
   });
