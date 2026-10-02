@@ -612,3 +612,15 @@ body > footer.seite .sozial a:focus-visible{
 .ganzheitlich p{margin:0;font-size:.98rem;color:var(--ink);max-width:760px}
 .ganzheitlich .btn{flex:none;white-space:nowrap}
 @media(max-width:820px){.ganzheitlich{flex-direction:column;align-items:flex-start;padding:24px 22px;gap:18px}}
+
+/* Hero kompakter, Video oben buendig, Erlaubnisse unter dem Video (02.10.2026) */
+.hero{padding:52px 0 76px} /* unten 76px: die Faktenleiste darunter ragt 46px hinein */
+.hero .raster{align-items:start}
+.hero .raster > div:last-child{padding-top:38px}
+.hero p.unter{margin:16px 0 22px}
+.hero .merkmale{margin-top:20px}
+.hero .bewertung{margin-top:22px}
+.hero .erlaubnisse-titel{margin-top:22px}
+.hero .erlaubnisse{max-width:none}
+@media(max-width:1320px) and (min-width:1025px){.hero .erlaubnisse{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1024px){.hero .raster > div:last-child{padding-top:0}}
