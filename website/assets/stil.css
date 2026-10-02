@@ -624,3 +624,4 @@ body > footer.seite .sozial a:focus-visible{
 .hero .erlaubnisse{max-width:none}
 @media(max-width:1320px) and (min-width:1025px){.hero .erlaubnisse{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1024px){.hero .raster > div:last-child{padding-top:0}}
+.erlaubnisse-hinweis{font-size:.76rem;color:var(--muted);margin:8px 0 0;line-height:1.45}
