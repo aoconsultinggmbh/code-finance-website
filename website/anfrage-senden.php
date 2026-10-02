@@ -7,7 +7,7 @@
    Empfaenger und Absender stehen unten als Konstanten.
    ========================================================================= */
 
-const EMPFAENGER   = 'tofik@ao-consult.de';   // TEST 02.10.2026, danach zurueck auf info@codefinance.de
+const EMPFAENGER   = 'info@codefinance.de';
 const ABSENDER     = 'info@codefinance.de';   // echte Adresse auf derselben Domain, sonst Spam
 const DANKE_SEITE  = 'danke.html';
 
