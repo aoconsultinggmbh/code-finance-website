@@ -28,7 +28,9 @@ RewriteCond %{HTTP_HOST} ^www\. [NC]
 RewriteRule ^(.*)$ https://codefinance.de/$1 [R=301,L]
 
 # --- Kurze Adressen (z. B. /servicepakete/) auf die echte Seite schicken ---
-RewriteRule ^(servicepakete|pkv-oder-gkv|impressum|datenschutz|erstinformation|gleichstellungshinweis)/?$ /$1.html [R=301,L]
+# Bewusst RedirectMatch statt RewriteRule: der Server loest /servicepakete/
+# sonst schon vorher selbst auf (MultiViews) und meldet 404.
+RedirectMatch 301 ^/(servicepakete|pkv-oder-gkv|impressum|datenschutz|erstinformation|gleichstellungshinweis)/$ https://codefinance.de/$1.html
 
 ErrorDocument 404 /index.html
 
