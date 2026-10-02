@@ -48,7 +48,7 @@
 <link rel="preload" href="fonts/montserrat-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/montserrat-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/schrift.css">
-<link rel="stylesheet" href="assets/stil.css?v=20260918g">
+<link rel="stylesheet" href="assets/stil.css?v=20261002a">
 <link rel="stylesheet" href="assets/barrierefreiheit.css">
 <link rel="stylesheet" href="assets/einwilligung.css">
 <link rel="stylesheet" href="assets/ci-bausteine.css">
@@ -148,10 +148,12 @@
         "@type": "OfferCatalog",
         "name": "Leistungen",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Versicherungen und Absicherung" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Finanzierung von Immobilien" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lösungen für Unternehmen" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vermögensaufbau und Investment" } }
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Versicherung" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Baufinanzierung" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Geldanlage und Investment" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Firmen und Gewerbe" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Immobilien: Kauf, Verkauf und Vermietung" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Energie: Strom und Gas" } }
         ]
       }
     },
@@ -243,7 +245,7 @@
         <div>
           <span class="kicker">Karlsruhe und Umgebung</span>
           <h1 id="hero-titel">Finanz- und Versicherungsberatung in Karlsruhe, <span class="mark">verständlich</span> erklärt</h1>
-          <p class="unter">Versicherung, Geldanlage und Baufinanzierung an einer Stelle. Wir sagen Ihnen ehrlich, was fehlt und was weg kann. Danach wissen Sie, wofür Sie zahlen.</p>
+          <p class="unter">Unabhängige Beratung zu Versicherung, Finanzierung, Vermögen und Immobilien aus einer Hand. Fundiert analysiert, klar erklärt und langfristig begleitet.</p>
           <div class="cta-reihe">
             <a class="btn" href="#kontakt">Kostenloses Erstgespräch <span class="pfeil" aria-hidden="true">&rarr;</span></a>
             <a class="btn hell" href="#leistungen">Leistungen ansehen</a>
@@ -276,6 +278,16 @@
               <span class="quelle">bei 14 Google-Bewertungen</span>
             </span>
           </a>
+
+          <!-- Gewerbeerlaubnisse, auf Wunsch von CODE FINANCE am 02.10.2026 ergaenzt.
+               Registernummern und Aufsichtsbehoerden stehen im Impressum. -->
+          <p class="erlaubnisse-titel">Unsere Erlaubnisse nach der Gewerbeordnung</p>
+          <ul class="erlaubnisse">
+            <li><b>§&nbsp;34d GewO</b><span>Versicherungen</span></li>
+            <li><b>§&nbsp;34c GewO</b><span>Immobilien</span></li>
+            <li><b>§&nbsp;34i GewO</b><span>Baufinanzierung</span></li>
+            <li><b>§&nbsp;34f GewO</b><span>Geldanlage</span></li>
+          </ul>
         </div>
         <div>
           <div class="videoflaeche">
@@ -322,8 +334,8 @@
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="7" height="7"/><rect x="13.5" y="3.5" width="7" height="7"/><rect x="3.5" y="13.5" width="7" height="7"/><rect x="13.5" y="13.5" width="7" height="7"/></svg>
           </span>
-          <span class="zahl">4</span>
-          <p>Bereiche an einer Stelle: Versicherung, Baufinanzierung, Firma, Geldanlage.</p>
+          <span class="zahl">6</span>
+          <p>Bereiche, ein Ansprechpartner: von der Versicherung bis zur Energie.</p>
         </div>
 
         <div class="fakt">
@@ -382,16 +394,16 @@
   <section id="leistungen" aria-labelledby="leistungen-titel">
     <div class="container">
       <span class="kicker">Leistungen</span>
-      <h2 id="leistungen-titel">Vier Bereiche, ein <span class="mark">Ansprechpartner</span></h2>
-      <p class="lead">Was Sie in einem Bereich entscheiden, wirkt auf die anderen. Deshalb schauen wir nie nur auf einen Vertrag.</p>
-      <div class="karten vier">
+      <h2 id="leistungen-titel">Sechs Bereiche. Ein <span class="mark">Ansprechpartner</span>.</h2>
+      <p class="lead">Absicherung, Finanzierung, Vermögen, Immobilie und laufende Kosten hängen zusammen. Deshalb betrachten wir Ihre Finanzen als Ganzes und begleiten Sie in allen sechs Bereichen mit einem festen Ansprechpartner.</p>
+      <div class="karten sechs">
 
         <article class="karte">
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.4-2.9 8.4-7 10-4.1-1.6-7-5.6-7-10V6l7-3z"/><path d="M9.5 12l1.8 1.8L15 10"/></svg>
           </span>
-          <h3>Versicherungen und Absicherung</h3>
-          <p>Krankenversicherung, Berufsunfähigkeit, Haftpflicht: Doppeltes fliegt raus, echte Lücken schließen wir.</p>
+          <h3>Versicherung</h3>
+          <p>Krankenversicherung, Berufsunfähigkeit, Haftpflicht: Wir bereinigen doppelte Verträge und schließen echte Lücken.</p>
           <p class="fazit">Danach wissen Sie, was im Ernstfall zahlt.</p>
         </article>
 
@@ -399,29 +411,51 @@
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
           </span>
-          <h3>Baufinanzierung für Ihre Immobilie</h3>
-          <p>Wir vergleichen die Banken und rechnen ehrlich durch, was monatlich tragbar ist.</p>
+          <h3>Baufinanzierung</h3>
+          <p>Wir vergleichen die Angebote der Banken und rechnen transparent durch, welche Rate dauerhaft tragbar ist.</p>
           <p class="fazit">Für alle, die kaufen, bauen oder umschulden.</p>
-        </article>
-
-        <article class="karte">
-          <span class="icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/><path d="M9 11h2M13 11h2"/></svg>
-          </span>
-          <h3>Lösungen für Selbstständige und Firmen</h3>
-          <p>Betriebshaftpflicht, Mitarbeiter, betriebliche Altersvorsorge. Wir sortieren Firma und Privates.</p>
-          <p class="fazit">Für alle, bei denen Firma und Privates zusammenhängen.</p>
         </article>
 
         <article class="karte">
           <span class="icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19h16"/><path d="M6 19V9"/><path d="M11 19V5"/><path d="M16 19v-7"/><path d="M20 19V7"/></svg>
           </span>
-          <h3>Geld anlegen und Vermögen aufbauen</h3>
+          <h3>Geldanlage &amp; Investment</h3>
           <p>Vom ersten Sparplan bis zur Altersvorsorge mit Fonds und ETFs, mit offenen Karten bei Risiko und Kosten.</p>
           <p class="fazit">Für alle, die nicht nur absichern, sondern aufbauen wollen.</p>
         </article>
 
+        <article class="karte">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-5h6v5"/><path d="M9 11h2M13 11h2"/></svg>
+          </span>
+          <h3>Firmen &amp; Gewerbe</h3>
+          <p>Betriebshaftpflicht, Mitarbeiter, betriebliche Altersvorsorge. Wir sortieren Firma und Privates.</p>
+          <p class="fazit">Für alle, bei denen Firma und Privates zusammenhängen.</p>
+        </article>
+
+        <article class="karte">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L20 3"/><path d="M16.5 6.5l2.5 2.5"/><path d="M14 9l2 2"/></svg>
+          </span>
+          <h3>Immobilien: Kauf, Verkauf &amp; Vermietung</h3>
+          <p>Wir begleiten Sie beim Kauf, beim Verkauf und bei der Vermietung Ihrer Immobilie. Finanzierung und Absicherung stimmen wir direkt mit ab.</p>
+          <p class="fazit">Für Käufer, Eigentümer und Vermieter.</p>
+        </article>
+
+        <article class="karte">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2.5L4.5 13.5H11l-1 8 8.5-11H12l1-8z"/></svg>
+          </span>
+          <h3>Energie: Strom &amp; Gas</h3>
+          <p>Wir vergleichen Strom- und Gastarife und kümmern uns um den Wechsel zum passenden Anbieter.</p>
+          <p class="fazit">Für alle, die bei laufenden Kosten nicht zu viel zahlen wollen.</p>
+        </article>
+
+      </div>
+      <div class="ganzheitlich">
+        <p><strong>Ganzheitlich heißt bei uns:</strong> Wir prüfen, wie eine Entscheidung in einem Bereich auf die anderen wirkt. Wer eine Immobilie kauft, braucht die passende Finanzierung, die richtige Absicherung und einen Blick auf die laufenden Kosten. Das alles besprechen Sie bei uns mit einer Person.</p>
+        <a class="btn" href="#kontakt">Kostenloses Erstgespräch <span class="pfeil" aria-hidden="true">&rarr;</span></a>
       </div>
     </div>
   </section>
