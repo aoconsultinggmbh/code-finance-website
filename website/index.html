@@ -941,7 +941,8 @@
 
 <script>
   /* Auf dieser Seite wird nichts von Dritten geladen: Schriften liegen lokal,
-     Bilder liegen lokal, es gibt keine Karte, kein Video und keine Analyse.
+     Bilder liegen lokal, es gibt keine Karte. Matomo zaehlt cookiefrei auf
+     unserem eigenen Server und braucht deshalb keine Einwilligung.
      Deshalb nur die Pflichtkategorie. Eine leere Kategorie "Marketing"
      aufzufuehren, obwohl nichts eingesetzt wird, waere irrefuehrend. */
   window.AO_EINWILLIGUNG = {
@@ -973,8 +974,9 @@
     }]
   };
 </script>
-<script src="assets/einwilligung.js" defer></script>
+<script src="assets/einwilligung.js?v=20261002" defer></script>
 <script src="assets/skript.js?v=20260918f" defer></script>
 <script src="assets/barrierefreiheit.js" defer></script>
+<script src="assets/statistik.js?v=1" defer></script>
 </body>
 </html>

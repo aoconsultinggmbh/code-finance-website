@@ -209,8 +209,9 @@
     if (konf.einleitung) return konf.einleitung;
     var optional = KAT.filter(function (k) { return !k.pflicht; });
     if (!optional.length) {
-      return 'Diese Website lädt keine Inhalte von fremden Servern und setzt weder Analyse- ' +
-             'noch Werbedienste ein. Gespeichert wird nur Ihre Entscheidung aus diesem Fenster, ' +
+      return 'Diese Website lädt keine Inhalte von fremden Servern und setzt keine Werbedienste ein. ' +
+             'Besuche zählen wir cookiefrei mit Matomo auf einem eigenen Server in Deutschland. ' +
+             'Gespeichert wird nur Ihre Entscheidung aus diesem Fenster, ' +
              'ausschließlich in Ihrem Browser.';
     }
     var namen = optional.map(function (k) { return k.name; }).join(' und ');
@@ -229,8 +230,9 @@
         '<h2 id="ein-titel">Sie entscheiden, was geladen wird</h2>' +
         '<p id="ein-text">' + einleitungsText() + '</p>' +
         '<p class="ein-fein">Ihre Wahl gilt 12 Monate und lässt sich jederzeit über ' +
-          '„Cookie-Einstellungen" in der Fußzeile ändern. Es werden keine Werbe- oder ' +
-          'Analysedienste eingesetzt. Mehr dazu in der ' +
+          '„Cookie-Einstellungen" in der Fußzeile ändern. Es werden keine Werbedienste ' +
+          'eingesetzt. Besuche zählen wir mit Matomo auf einem eigenen Server in Deutschland, ' +
+          'ohne Cookies und ohne Weitergabe an Dritte. Mehr dazu in der ' +
           '<a href="' + LINK_DS + '">Datenschutzerklärung</a>.</p>' +
       '</div>' +
       '<div class="ein-fuss">' +
